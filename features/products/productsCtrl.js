@@ -36,13 +36,15 @@ module.exports = {
   },
 
   updateProduct(req, res) {
-    if (!req.params.id) {
+    if (!req.params) {
       return res.status(400).send("Id Query Needed");
     }
-    db.products.update({_id: mongojs.ObjectId(req.params.id)}, (err, response) => {
-      if (err) return res.status(err).json(err);
-      else return res.json(response);
+    db.products.update(
+      {_id: mongojs.ObjectId(req.params.id)},
+      {$set: req.body},
+      (err, response) => {
+        if (err) return res.status(err).json(err);
+        else return res.json(response);
     })
-
   }
 }
