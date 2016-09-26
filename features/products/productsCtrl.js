@@ -1,14 +1,37 @@
+const mongojs = require("mongojs");
+const db = mongojs("ecommerce", ["products"]);
+
+
 module.exports = {
   getProducts(req, res) {
-    res.send("Working");
+    let newQuery = {}
+    if (req.query) {
+      newQuery = req.query;
+    }
+    db.products.find(newQuery, (err, data) => {
+      if (err) return res.status(err).json(err);
+      else return res.json(data);
+    })
   },
+
   postProduct(req, res) {
-    res.send("Working");
+    db.products.insert(req.body, (err, product) => {
+      if (err) return res.status(err).json(err);
+      else return res.json(product);
+    });
   },
+
   getProductById(req, res) {
-    res.send("Working " + req.params.id);
+    db.products.find(mongojs.ObjectId(req.params.id), (err, product) => {
+      if (err) return res.status(err).json(err);
+      else return res.json(product)
+    });
   },
+
   deleteProduct(req, res) {
-    res.send("Working " + req.params.id);
+    db.products.remove({_id: mongojs.ObjectId(req.params.id)}, (err, product) => {
+      if (err) return res.status(err).json(err);
+      else return res.json(product);
+    })
   }
 }
