@@ -1,5 +1,4 @@
-const mongojs = require("mongojs");
-const db = mongojs("ecommerce", ["products"]);
+const Product = require("./Product");
 
 
 module.exports = {
@@ -8,28 +7,28 @@ module.exports = {
     if (req.query) {
       newQuery = req.query;
     }
-    db.products.find(newQuery, (err, data) => {
+    Product.find(newQuery, (err, data) => {
       if (err) return res.status(err).json(err);
       else return res.json(data);
     })
   },
 
   postProduct(req, res) {
-    db.products.insert(req.body, (err, product) => {
+    new Product(req.body).save((err, product) => {
       if (err) return res.status(err).json(err);
       else return res.json(product);
     });
   },
 
   getProductById(req, res) {
-    db.products.find(mongojs.ObjectId(req.params.id), (err, product) => {
+    Product.findById(req.params.id, (err, product) => {
       if (err) return res.status(err).json(err);
       else return res.json(product)
     });
   },
 
   deleteProduct(req, res) {
-    db.products.remove({_id: mongojs.ObjectId(req.params.id)}, (err, product) => {
+    Product.findByIdAndRemove(req.params.id, (err, product) => {
       if (err) return res.status(err).json(err);
       else return res.json(product);
     })
@@ -39,10 +38,7 @@ module.exports = {
     if (!req.params) {
       return res.status(400).send("Id Query Needed");
     }
-    db.products.update(
-      {_id: mongojs.ObjectId(req.params.id)},
-      {$set: req.body},
-      (err, response) => {
+    Product.findByIdAndUpdate(req.params.id, {$set: req.body}, (err, response) => {
         if (err) return res.status(err).json(err);
         else return res.json(response);
     })
