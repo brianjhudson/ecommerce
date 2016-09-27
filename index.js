@@ -8,6 +8,8 @@ const express = require("express"),
 
 app.use(cors());
 app.use(json());
+app.use(express.static(`${__dirname}/public`));
+
 
 mongoose.connect(mongoUri);
 mongoose.connection.once("open", () => console.log(`Connected to MongoDB at ${mongoUri}`));

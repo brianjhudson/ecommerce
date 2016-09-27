@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="page-header">Products</h2>
+  <div class="row">
+    <h3>Add Product</h3>
+    <form class="form-group">
+      <input type="text" class="form-control col-sm-8" placeholder="Enter product title" ng-model="newProduct.title">
+      <textarea class="form-control" type="text" placeholder="Enter description" rows="2" ng-model="newProduct.description"></textarea>
+      <input type="text" class="form-control col-xs-3" placeholder="Enter price" ng-model="newProduct.price">
+      <input type="text" class="form-control col-xs-3" placeholder="color" ng-model="newProduct.color">
+      <select class="col-xs-3" name="" ng-model="newProduct.category">
+        <option value="">--Select a Category--</option>
+        <option value="children">Children's Clothing</option>
+        <option value="men">Men's Clothing</option>
+        <option value="women">Women's Clothing</option>
+      </select>
+      <button class="btn btn-primary" ng-click="postProduct(newProduct)">Submit</button>
+    </form>
+  </div>
+  <div class="row">
+    <h3>Inventory</h3>
+    <div class="col-sm-4" ng-repeat="product in products">
+      <h4>{{product.title}}</h4>
+      <h4><small>{{product.description}}</small></h4>
+      <p>{{product.price | currency}}</p>
+      <p>Color: {{product.color}}</p>
+      <button class="btn btn-primary" ng-click="updateProduct(product)">Update</button>
+      <button class="btn btn-primary" ng-click="deleteProduct(product)">Delete</button>
+    </div>
+  </div>
+</div>

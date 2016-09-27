@@ -9,10 +9,12 @@ angular.module("mainApp", ["ui.router"])
 
     .state("shop", {
       url: "/shop",
-      templateUrl: "../views/shop.html"
-      controller: "mainCtrl"
-      controllerAs: "vm"
+      templateUrl: "../views/shop.html" 
     })
 
+    .state("admin", {
+      url: "/admin",
+      templateUrl: "../views/admin.html"
+    })
 
 })
