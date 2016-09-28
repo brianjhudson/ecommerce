@@ -1,14 +1,14 @@
 <div class="container">
-  <h2 class="page-header">Products</h2>
+  <h3 class="page-header">Products</h3>
   <div class="row">
-    <h3>Add Product</h3>
+    <h4>Add Product</h4>
     <form class="form-group">
       <input type="text" class="form-control col-sm-8" placeholder="Enter product title" ng-model="newProduct.title">
-      <textarea class="form-control" type="text" placeholder="Enter description" rows="2" ng-model="newProduct.description"></textarea>
+      <textarea class="materialize-textarea" type="text" placeholder="Enter description" rows="2" ng-model="newProduct.description"></textarea>
       <input type="text" class="form-control col-xs-3" placeholder="Enter price" ng-model="newProduct.price">
       <input type="text" class="form-control col-xs-3" placeholder="color" ng-model="newProduct.color">
-      <select class="col-xs-3" name="" ng-model="newProduct.category">
-        <option value="">--Select a Category--</option>
+      <select class="browser-default" ng-model="newProduct.category">
+        <option value="" disabled selected>--Select a Category--</option>
         <option value="children">Children's Clothing</option>
         <option value="men">Men's Clothing</option>
         <option value="women">Women's Clothing</option>
@@ -16,15 +16,42 @@
       <button class="btn btn-primary" ng-click="postProduct(newProduct)">Submit</button>
     </form>
   </div>
-  <div class="row">
-    <h3>Inventory</h3>
-    <div class="col-sm-4" ng-repeat="product in products">
-      <h4>{{product.title}}</h4>
-      <h4><small>{{product.description}}</small></h4>
-      <p>{{product.price | currency}}</p>
-      <p>Color: {{product.color}}</p>
-      <button class="btn btn-primary" ng-click="updateProduct(product)">Update</button>
-      <button class="btn btn-primary" ng-click="deleteProduct(product)">Delete</button>
+
+    <div class="row">
+    <h4>Inventory</h4>
+      <div class="col s12 m6" ng-repeat="product in products">
+        <div class="card" ng-hide="showUpdate">
+          <div class="card-content">
+            <span class="card-title">{{product.title}}</span>
+            <p>{{product.description}}</p>
+            <p>{{product.price | currency}}</p>
+            <p>Color: {{product.color}}</p>
+          </div>
+          <div class="card-action">
+            <button class="btn" ng-click="showUpdate = !showUpdate">Update</button>
+            <button class="btn" ng-click="deleteProduct(product)">Delete</button>
+          </div>
+        </div>
+        <div class="card" ng-show="showUpdate">
+          <div class="card-content">
+            <span class="card-title">{{product.title}}</span>
+            <form>
+              <div class="input-field">
+                <select class="browser-default" ng-model="field">
+                  <option value="" disabled selected>Choose a field to update</option>
+                  <option value="title">Title</option>
+                  <option value="description">Description</option>
+                  <option value="price">Price</option>
+                  <option value="color">Color</option>
+                </select>
+              </div>
+              <input type="text" placeholder="Enter a new value" ng-model="value">
+              <button class="btn btn-primary" ng-click="updateProduct(product, field, value)">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
     </div>
+
   </div>
-</div>

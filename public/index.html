@@ -3,38 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>ECommerce Site</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body ng-controller="productController">
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">WeddingClothes</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li class="active"><a ui-sref="home">Welcome</a></li>
-            <li><a ui-sref="shop">Shop</a></li>
-            <li><a ui-sref="admin">Admin</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
-        </div>
+    <nav>
+      <div class="nav-wrapper">
+        <a class="brand-logo" ui-sref="shop">Haberdashery</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a ui-sref="shop">Shop</a></li>
+          <li><a ui-sref="admin">Admin</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li class="active"><a ui-sref="shop">Shop</a></li>
+          <li><a ui-sref="admin">Admin</a></li>
+        </ul>
       </div>
     </nav>
+    <div class="container">
     <ui-view></ui-view>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.js" charset="utf-8"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script> -->
     <script src="js/app.js" charset="utf-8"></script>
     <script src="js/productController.js" charset="utf-8"></script>
     <script src="js/productService.js" charset="utf-8"></script>

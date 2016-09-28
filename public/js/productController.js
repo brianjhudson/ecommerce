@@ -10,9 +10,8 @@ angular.module("mainApp").controller("productController", function($scope, produ
     });
   }
 
-  $scope.updateProduct = product => {
-    productService.updateProduct(product).then(function(result) {
-      console.log(result);
+  $scope.updateProduct = (product, field, value) => {
+    productService.updateProduct(product, field, value).then(function(result) {
       getProducts();
     });
   };
@@ -24,9 +23,7 @@ angular.module("mainApp").controller("productController", function($scope, produ
   };
 
   $scope.postProduct = newProduct => {
-    console.log(newProduct);
     productService.postProduct(newProduct).then(function(result) {
-      console.log(result);
       getProducts();
     })
   };

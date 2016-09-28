@@ -1,5 +1,6 @@
 angular.module("mainApp").service("productService", function($http) {
   const baseUrl = "/api/products";
+
   this.getProducts = () => {
     return $http.get(baseUrl).then(function(products) {
       return products;
@@ -12,9 +13,14 @@ angular.module("mainApp").service("productService", function($http) {
     })
   };
 
-  this.updateProduct = (product, update) => {
-    return $http.put(baseUrl + "/" + product.id, update).then(result => {
-      return products;
+  this.updateProduct = (product, field, value) => {
+    console.log(field, value);
+    const request = {};
+    request[field] = value;
+    console.log(request);
+    return $http.put(baseUrl + "/" + product._id, request).then(result => {
+      console.log(result);
+      return result;
     })
   };
 

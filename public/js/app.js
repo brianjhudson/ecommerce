@@ -1,15 +1,10 @@
 angular.module("mainApp", ["ui.router"])
 .config(function($urlRouterProvider, $stateProvider) {
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("shop");
   $stateProvider
-    .state("home", {
-      url: "/",
-      templateUrl: "../views/home.html"
-    })
-
     .state("shop", {
       url: "/shop",
-      templateUrl: "../views/shop.html" 
+      templateUrl: "../views/shop.html"
     })
 
     .state("admin", {
@@ -18,3 +13,5 @@ angular.module("mainApp", ["ui.router"])
     })
 
 })
+
+$(".button-collapse").sideNav();
