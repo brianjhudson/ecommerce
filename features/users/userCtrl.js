@@ -10,7 +10,11 @@ module.exports = {
 
     getUsers(req, res) {
       User.find()
-      .populate("cart.item orders")
+      .populate("cart.item")
+      .populate({
+        path: "orders",
+        populate: {path: "products.item"}
+      })
       .exec()
       .then(results => {
         return res.status(201).json(results);
