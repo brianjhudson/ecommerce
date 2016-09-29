@@ -6,7 +6,7 @@ const User = new mongoose.Schema({
   , email: {type: String, required: true, trim: true, unique: true, index: true}
   , password: {type: String, required: true}
   , cart: [Cart]
-  , orders: []
+  , orders: [{type: mongoose.Schema.Types.ObjectId, ref: "Order"}]
 });
 
 module.exports = mongoose.model("User", User);
