@@ -21,6 +21,16 @@ module.exports = {
         }
       })
     });
+  },
+
+  getOrders(req, res) {
+    let newQuery = {};
+    if (req.query) newQuery = req.query;
+    Order.find(newQuery, (err, orders) => {
+      if (err) return res.status(500).json(err);
+      return res.status(200).json(orders);
+    });
   }
+
 
 }

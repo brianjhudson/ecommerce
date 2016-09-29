@@ -25,7 +25,11 @@ module.exports = {
 
     getUserById(req, res) {
       User.findById(req.params.id)
-      .populate("cart.item orders")
+      .populate("cart.item")
+      .populate({
+        path: "orders",
+        populate: {path: "products.item"}
+      })
       .exec()
       .then(results => {
         return res.status(201).json(results);
