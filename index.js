@@ -2,7 +2,7 @@ const express = require("express"),
   app = express(),
   {json} = require("body-parser"),
   cors = require("cors"),
-  port = 8700,
+  port = 8800,
   mongoose = require("mongoose"),
   mongoUri = "mongodb://localhost:27017/ecommerce";
 

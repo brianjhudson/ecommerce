@@ -5,4 +5,5 @@ module.exports = app => {
   app.get("/api/users", userCtrl.getUsers);
   app.get("/api/users/:id", userCtrl.getUserById)
   app.post("/api/users/:id", userCtrl.postProductToCart);
+  app.put("/api/users/:id", userCtrl.updateCart);
 }
