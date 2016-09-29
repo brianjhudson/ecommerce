@@ -9,9 +9,13 @@ module.exports = {
     },
 
     getUsers(req, res) {
-      User.find({}, (err, users) => {
-        if (err) return res.status(500).json(err);
-        else return res.status(200).json(users);
+      User.find()
+      .populate("cart.item orders")
+      .exec()
+      .then(results => {
+        return res.status(201).json(results);
+      }, error => {
+        return res.status(500).json(error);
       })
     },
 
