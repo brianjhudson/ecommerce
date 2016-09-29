@@ -1,0 +1,12 @@
+.brand-logo {
+  font-family: "Indie Flower", cursive;
+}
+.page-header {
+  background: url("https://dl.dropboxusercontent.com/s/u15cop12z2ocoul/runner-splash.jpg?dl=0") no-repeat center center;
+  background-size: cover;
+  height: 300px;
+  margin-top: 0;
+}
+nav {
+  background-color: hsla(0, 0%, 0%, .25)
+}

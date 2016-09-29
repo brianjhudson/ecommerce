@@ -6,6 +6,7 @@ const Product = new mongoose.Schema({
   , price: { type: Number, min: 0 }
   , color: { type: String }
   , category: { type: String, enum: [ "children", "women", "men" ] }
+  , imageUrl: {type: String} 
 
 });
 
