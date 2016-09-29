@@ -16,9 +16,13 @@ module.exports = {
     },
 
     getUserById(req, res) {
-      User.findById(req.params.id, (err, user) => {
-        if (err) return res.status(500).json(err);
-        else return res.status(201).json(user);
+      User.findById(req.params.id)
+      .populate("cart.item")
+      .exec()
+      .then(results => {
+        return res.status(201).json(results);
+      }, error => {
+        return res.status(500).json(error);
       })
     },
 
