@@ -1,23 +1,25 @@
-angular.module("mainApp", ["ui.router"])
+angular.module("mainApp", ["ui.router", "ui.materialize"])
 .config(function($urlRouterProvider, $stateProvider) {
-  $urlRouterProvider.otherwise("home");
+  $urlRouterProvider.otherwise("shop");
   $stateProvider
-    .state("home", {
-      url: "/home",
-      templateUrl: "../views/home.html"
-    })
+    // .state("home", {
+    //   url: "/home",
+    //   templateUrl: "../views/home.html"
+    // })
 
     .state("shop", {
       url: "/shop",
       templateUrl: "../views/shop.html"
     })
 
-    .state("admin", {
+    .state("admin", { 
       url: "/admin",
       templateUrl: "../views/admin.html"
     })
 
-})
+    .state("cart", {
+      url: "/cart",
+      templateUrl: "../views/cart.html"
+    })
 
-$(".button-collapse").sideNav();
-$('.carousel.carousel-slider').carousel({full_width: true});
+})

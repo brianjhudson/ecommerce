@@ -12,8 +12,18 @@
           <p>Color: {{product.color}}</p>
         </div>
         <div class="card-action">
-          <a class="right-align" href="#" ng-click="updateProduct(product)">Add To Cart</a>
+          <a ng-click="viewItem(product)">View Item</a>
         </div>
+        <div style="display: none" modal data-target="itemViewModal" ready="onReady" complete="onComplete" open="modalOpen">Open Modal</div>
+      </div>
+    </div>
+    <div id="itemViewModal" class="modal">
+      <div class="modal-content">
+        <h4>{{viewedItem.title}}</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-green btn" ng-click="closeModal()">Back to Browsing</a>
       </div>
     </div>
 

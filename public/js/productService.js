@@ -1,14 +1,15 @@
 angular.module("mainApp").service("productService", function($http) {
-  const baseUrl = "/api/products";
+  const productUrl = "/api/products";
+
 
   this.getProducts = () => {
-    return $http.get(baseUrl).then(function(products) {
+    return $http.get(productUrl).then(function(products) {
       return products;
     })
   };
 
   this.postProduct = product => {
-    return $http.post(baseUrl, product).then(result => {
+    return $http.post(productUrl, product).then(result => {
       return result;
     })
   };
@@ -18,16 +19,20 @@ angular.module("mainApp").service("productService", function($http) {
     const request = {};
     request[field] = value;
     console.log(request);
-    return $http.put(baseUrl + "/" + product._id, request).then(result => {
+    return $http.put(productUrl + "/" + product._id, request).then(result => {
       console.log(result);
       return result;
     })
   };
 
   this.deleteProduct = product => {
-    return $http.delete(baseUrl + "/" + product._id).then(result => {
+    return $http.delete(productUrl + "/" + product._id).then(result => {
       return result;
     })
   };
+
+  this.addToCart = product => {
+    return $http.post(userUrl + "/" + user._id, product);
+  }
 
 })
