@@ -1,31 +1,8 @@
 <div>
   <div class="row"><h3 class="center-align">Browse Our Collection</h3></div>
   <div class="row">
-
     <div class="col s12 m6 l4" ng-repeat="product in products">
-      <div class="card">
-        <div class="card-image"><img ng-src="{{product.imageUrl}}" alt=""></div>
-        <div class="card-content">
-          <span class="card-title">{{product.title}}</span>
-          <p>{{product.description}}</p>
-          <p>{{product.price | currency}}</p>
-          <p>Color: {{product.color}}</p>
-        </div>
-        <div class="card-action">
-          <a ng-click="viewItem(product)">View Item</a>
-        </div>
-        <div style="display: none" modal data-target="itemViewModal" ready="onReady" complete="onComplete" open="modalOpen">Open Modal</div>
-      </div>
+      <item-display-directive product="product"></item-display-directive>
     </div>
-    <div id="itemViewModal" class="modal">
-      <div class="modal-content">
-        <h4>{{viewedItem.title}}</h4>
-        <p>A bunch of text</p>
-      </div>
-      <div class="modal-footer">
-        <a class="modal-action modal-close waves-effect waves-green btn" ng-click="closeModal()">Back to Browsing</a>
-      </div>
-    </div>
-
   </div>
 </div>
