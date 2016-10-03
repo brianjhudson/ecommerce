@@ -53,7 +53,7 @@ module.exports = {
           for (let i = 0; i < user.cart.length; i++) {
             if (user.cart[i].item == req.query.itemId) {
               if (qty === 0) user.cart.pull(user.cart[i]._id);
-              else user.cart.set(i, {quantity: qty, item: req.query.itemId});
+              else user.cart.set(i, {quantity: qty, item: req.query.itemId, size: Number(req.query.size)});
               user.save();
               return res.status(201).json(user);
             }

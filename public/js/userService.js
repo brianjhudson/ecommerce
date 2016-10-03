@@ -13,4 +13,10 @@ angular.module("mainApp").service("userService", function($http) {
     });
   };
 
+  this.updateCart = (userId, productId, size, quantity) => {
+    return $http.put(userUrl + "/" + userId + "?" + "qty=" + quantity + "&itemId=" + productId + "&size=" + size).then(result => {
+      return result;
+    })
+  }
+
 })
