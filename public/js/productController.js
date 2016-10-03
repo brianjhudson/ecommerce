@@ -31,13 +31,21 @@ angular.module("mainApp").controller("productController", function($scope, $stat
   };
 
   $scope.updateCart = (item) => {
-    console.log(item);
     userService.updateCart($scope.user._id, item.item._id, item.size, item.quantity).then(result => {
       userService.getUser().then(result => {
         $state.go("cart");
 
       })
     });
+  };
+
+  $scope.placeOrder = () => {
+    userService.placeOrder($scope.user._id).then(result => {
+      userService.getUser().then(result => {
+        console.log($scope.user.orders);
+        $state.go("orders")
+      })
+    })
   };
 
   $scope.updateProduct = (product, field, value) => {

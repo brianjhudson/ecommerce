@@ -23,4 +23,8 @@ angular.module("mainApp", ["ui.router", "ui.materialize"])
       templateUrl: "../views/cart.html"
     })
 
+    .state("orders", {
+      url: "/orders",
+      templateUrl: "../views/orders.html"
+    })
 })

@@ -1,5 +1,6 @@
 angular.module("mainApp").service("userService", function($http) {
   const userUrl = "/api/users";
+  const orderUrl = "/api/orders"
 
   this.getUser = () => {
     return $http.get(userUrl).then(result => {
@@ -15,6 +16,12 @@ angular.module("mainApp").service("userService", function($http) {
 
   this.updateCart = (userId, productId, size, quantity) => {
     return $http.put(userUrl + "/" + userId + "?" + "qty=" + quantity + "&itemId=" + productId + "&size=" + size).then(result => {
+      return result;
+    })
+  };
+
+  this.placeOrder = (userId) => {
+    return $http.post(orderUrl + "/" + userId).then(result => {
       return result;
     })
   }
