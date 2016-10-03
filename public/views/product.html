@@ -6,7 +6,28 @@
       </div>
       <item-display-directive product="selectedProduct"></item-display-directive>
       <div class="card-action">
-        <a ng-click="addToCart(selectedProduct_.id)">Add to Cart</a>
+        <input-field>
+          <select material-select ng-model="selectedProduct.size">
+            <option value="" disabled selected>--Select Size--</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+          </select>
+        </input-field>
+        <input-field>
+          <select material-select ng-model="selectedProduct.quantity">
+            <option value="" disabled selected>--Select Quantity--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </input-field>
+        <a ng-click="addToCart()">Add to Cart</a>
       </div>
     </div>
   </div>

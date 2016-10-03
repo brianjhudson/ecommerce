@@ -7,8 +7,8 @@ angular.module("mainApp").service("userService", function($http) {
     })
 
   }
-  this.addToCart = (userId, productId) => {
-    return $http.post(userUrl + "/" + userId, {item: productId, quantity: 1}).then(result => {
+  this.addToCart = (userId, productId, size, quantity) => {
+    return $http.post(userUrl + "/" + userId, {item: productId, size: size, quantity: quantity}).then(result => {
       return result;
     });
   };

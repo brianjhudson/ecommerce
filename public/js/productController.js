@@ -22,8 +22,8 @@ angular.module("mainApp").controller("productController", function($scope, $stat
     $state.go("product");
   }
 
-  $scope.addToCart = productId => {
-    userService.addToCart($scope.user._id, productId).then(result => {
+  $scope.addToCart = () => {
+    userService.addToCart($scope.user._id, $scope.selectedProduct._id, $scope.selectedProduct.size, $scope.selectedProduct.quantity).then(result => {
       getUser();
     });
   };
