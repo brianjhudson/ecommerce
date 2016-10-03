@@ -45,10 +45,7 @@
         <div class="card" ng-hide="showUpdate">
           <div class="card-content">
             <div class="card-image"><img ng-src="{{product.imageUrl}}" alt=""></div>
-            <span class="card-title">{{product.title}}</span>
-            <p>{{product.description}}</p>
-            <p>{{product.price | currency}}</p>
-            <p>Color: {{product.color}}</p>
+            <item-display-directive product="product"></item-display-directive>
           </div>
           <div class="card-action">
             <a ng-click="showUpdate = !showUpdate">Update</a>

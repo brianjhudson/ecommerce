@@ -1,7 +1,6 @@
-angular.module("mainApp").controller("productController", function($scope, productService, userService){
+angular.module("mainApp").controller("productController", function($scope, $state, productService, userService){
 
   function init() {
-    $scope.modalOpen = false;
     getProducts();
     getUser();
   }
@@ -18,19 +17,13 @@ angular.module("mainApp").controller("productController", function($scope, produ
   });
   }
 
-  $scope.viewItem = product => {
-    $scope.viewedItem = product;
-    $scope.modalOpen = true;
-  }
-
-  $scope.closeModal = () => {
-    $scope.viewedItem = {};
-    $scope.modalOpen = false;
+  $scope.viewProduct = product => {
+    $scope.selectedProduct = product;
+    $state.go("product");
   }
 
   $scope.addToCart = productId => {
     userService.addToCart($scope.user._id, productId).then(result => {
-
       getUser();
     });
   };

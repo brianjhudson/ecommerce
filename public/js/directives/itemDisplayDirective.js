@@ -1,11 +1,9 @@
 angular.module("mainApp").directive("itemDisplayDirective", function() {
   return {
     restrict: "AE"
+    , replace: true
     , scope: {
         product: "="
-    }
-    , link: function(scope, element, attributes) {
-
     }
     , templateUrl: "js/directives/itemDisplay.html"
   }

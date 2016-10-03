@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card">
+      <div class="card-image">
+        <img ng-src="{{selectedProduct.imageUrl}}" alt="">
+      </div>
+      <item-display-directive product="selectedProduct"></item-display-directive>
+      <div class="card-action">
+        <a ng-click="addToCart(selectedProduct_.id)">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+</div>
