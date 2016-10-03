@@ -1,10 +1,17 @@
 angular.module("mainApp").service("productService", function($http) {
   const productUrl = "/api/products";
+  const orderUrl = "/api/orders"
 
 
   this.getProducts = () => {
     return $http.get(productUrl).then(function(products) {
       return products;
+    })
+  };
+
+  this.getOrders = () => {
+    return $http.get(orderUrl).then(function(orders) {
+      return orders;
     })
   };
 
@@ -15,13 +22,10 @@ angular.module("mainApp").service("productService", function($http) {
   };
 
   this.updateProduct = (product, field, value) => {
-    console.log(field, value);
     const request = {};
     request[field] = value;
-    console.log(request);
     return $http.put(productUrl + "/" + product._id, request).then(result => {
-      console.log(result);
-      return result;
+        return result;
     })
   };
 

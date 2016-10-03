@@ -3,6 +3,13 @@ angular.module("mainApp").controller("productController", function($scope, $stat
   function init() {
     getProducts();
     getUser();
+    getOrders();
+  }
+
+  function getOrders() {
+    productService.getOrders().then(function(result) {
+      $scope.orders = result.data;
+    })
   }
 
   function getProducts() {
@@ -42,7 +49,6 @@ angular.module("mainApp").controller("productController", function($scope, $stat
   $scope.placeOrder = () => {
     userService.placeOrder($scope.user._id).then(result => {
       userService.getUser().then(result => {
-        console.log($scope.user.orders);
         $state.go("orders")
       })
     })

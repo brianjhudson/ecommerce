@@ -13,11 +13,6 @@ angular.module("mainApp", ["ui.router", "ui.materialize"])
       templateUrl: "../views/product.html"
     })
 
-    .state("admin", {
-      url: "/admin",
-      templateUrl: "../views/admin.html"
-    })
-
     .state("cart", {
       url: "/cart",
       templateUrl: "../views/cart.html"
@@ -27,4 +22,16 @@ angular.module("mainApp", ["ui.router", "ui.materialize"])
       url: "/orders",
       templateUrl: "../views/orders.html"
     })
+
+    .state("admin", {
+      url: "/admin",
+      templateUrl: "../views/admin.html"
+    })
+
+    .state("adminOrders", {
+      url: "/adminOrders",
+      templateUrl: "../views/adminOrders.html"
+    })
+
+
 })
