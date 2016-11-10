@@ -26,10 +26,14 @@ module.exports = {
   getOrders(req, res) {
     let newQuery = {};
     if (req.query) newQuery = req.query;
-    Order.find(newQuery, (err, orders) => {
-      if (err) return res.status(500).json(err);
-      return res.status(200).json(orders);
-    });
+    Order.find(newQuery)
+    .populate("user products.item")
+    .exec()
+    .then(results => {
+      return res.status(201).json(results);
+    }, error => {
+      return res.status(500).json(error);
+    })
   }
 
 
