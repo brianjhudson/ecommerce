@@ -3,8 +3,8 @@ angular.module("mainApp").service("userService", function($http) {
   const orderUrl = "/api/orders"
 
   this.getUser = () => {
-    return $http.get(userUrl).then(result => {
-      return result.data[0];
+    return $http.get("/user").then(result => {
+      return result;
     })
 
   }
