@@ -4,7 +4,7 @@
   "description": "<img src=\"https://devmounta.in/img/logowhiteblue.png\" width=\"250\" align=\"right\">",
   "main": "index.js",
   "scripts": {
-    "start": "index.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": "6.6.0"
