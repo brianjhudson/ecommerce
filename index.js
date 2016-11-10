@@ -8,7 +8,6 @@ const express = require("express"),
   config = require("./config.js")
   port = process.env.PORT || 8800,
   mongoose = require("mongoose"),
-  mongoUri = "mongodb://localhost:27017/ecommerce",
   User = require("./features/users/User");
 
 app.use(session({secret: process.env.SESSION_SECRET || config.mySecrets.secret}));
@@ -56,8 +55,8 @@ passport.use(new FacebookStrategy({
 app.get("/auth/facebook", passport.authenticate("facebook"));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: "https://hudson-ecommerce.herokuapp.com//#/cart",
-    failureRedirect: 'https://hudson-ecommerce.herokuapp.com//#/login'
+    successRedirect: "https://hudson-ecommerce.herokuapp.com/#/cart",
+    failureRedirect: 'https://hudson-ecommerce.herokuapp.com/#/login'
 }));
 
 passport.serializeUser(function(user, done) {
@@ -74,11 +73,11 @@ app.get("/user", (req, res) => {
 
 app.get('/logout', function(req, res){
   req.logout();
-  res.redirect('https://hudson-ecommerce.herokuapp.com//#/');
+  res.redirect('https://hudson-ecommerce.herokuapp.com/#/');
 });
 
-mongoose.connect(process.env.MONGOURI || mongoUri);
-mongoose.connection.once("open", () => console.log(`Connected to MongoDB at ${mongoUri}`));
+mongoose.connect(process.env.MONGOURI || config.mongo.mongoUri);
+mongoose.connection.once("open", () => console.log(`Connected to MongoDB`));
 
 
 require("./masterRoutes")(app);
