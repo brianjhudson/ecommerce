@@ -6,12 +6,12 @@ const express = require("express"),
   passport = require("passport"),
   {Strategy: FacebookStrategy} = require("passport-facebook"),
   config = require("./config.js")
-  port = 8800,
+  port = process.env.PORT || 8800,
   mongoose = require("mongoose"),
   mongoUri = "mongodb://localhost:27017/ecommerce",
   User = require("./features/users/User");
 
-app.use(session({secret: config.mySecrets.secret}));
+app.use(session({secret: process.env.SESSION_SECRET || config.mySecrets.secret}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
@@ -19,9 +19,9 @@ app.use(json());
 app.use(express.static(`${__dirname}/public`));
 
 passport.use(new FacebookStrategy({
-    clientID: config.facebook.clientId,
-    clientSecret: config.facebook.secret,
-    callbackURL: config.facebook.cbUrl
+    clientID: process.env.CLIENT_ID || config.facebook.clientId,
+    clientSecret: process.env.CLIENT_SECRET || config.facebook.secret,
+    callbackURL: "https://hudson-ecommerce.herokuapp.com/auth/facebook/callback"
   },
   function(token, refreshToken, profile, done) {
     process.nextTick(function() {
@@ -56,8 +56,8 @@ passport.use(new FacebookStrategy({
 app.get("/auth/facebook", passport.authenticate("facebook"));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: "http://localhost:8800/#/cart",
-    failureRedirect: 'http://localhost:8800/#/login'
+    successRedirect: "https://hudson-ecommerce.herokuapp.com//#/cart",
+    failureRedirect: 'https://hudson-ecommerce.herokuapp.com//#/login'
 }));
 
 passport.serializeUser(function(user, done) {
@@ -74,10 +74,10 @@ app.get("/user", (req, res) => {
 
 app.get('/logout', function(req, res){
   req.logout();
-  res.redirect('http://localhost:8800/#/');
+  res.redirect('https://hudson-ecommerce.herokuapp.com//#/');
 });
 
-mongoose.connect(mongoUri);
+mongoose.connect(process.env.MONGOURI || mongoUri);
 mongoose.connection.once("open", () => console.log(`Connected to MongoDB at ${mongoUri}`));
 
 
