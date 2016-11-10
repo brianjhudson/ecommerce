@@ -24,7 +24,7 @@ module.exports = {
     },
 
     getUserById(req, res) {
-      User.findById(req.params.id)
+      User.find({facebook_id: req.params.id})
       .populate("cart.item")
       .populate({
         path: "orders",
