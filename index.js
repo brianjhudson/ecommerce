@@ -5,12 +5,13 @@ const express = require("express"),
   session = require("express-session"),
   passport = require("passport"),
   {Strategy: FacebookStrategy} = require("passport-facebook"),
-  config = require("./config.js")
+  // config = require("./config.js")
   port = process.env.PORT || 8800,
   mongoose = require("mongoose"),
   User = require("./features/users/User");
 
-app.use(session({secret: process.env.SESSION_SECRET || config.mySecrets.secret}));
+// app.use(session({secret: process.env.SESSION_SECRET || config.mySecrets.secret}));
+app.use(session({secret: process.env.SESSION_SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
@@ -18,8 +19,10 @@ app.use(json());
 app.use(express.static(`${__dirname}/public`));
 
 passport.use(new FacebookStrategy({
-    clientID: process.env.CLIENT_ID || config.facebook.clientId,
-    clientSecret: process.env.CLIENT_SECRET || config.facebook.secret,
+    // clientID: process.env.CLIENT_ID || config.facebook.clientId,
+    // clientSecret: process.env.CLIENT_SECRET || config.facebook.secret,
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "https://hudson-ecommerce.herokuapp.com/auth/facebook/callback"
   },
   function(token, refreshToken, profile, done) {
@@ -76,7 +79,8 @@ app.get('/logout', function(req, res){
   res.redirect('https://hudson-ecommerce.herokuapp.com/#/');
 });
 
-mongoose.connect(process.env.MONGOURI || config.mongo.mongoUri);
+// mongoose.connect(process.env.MONGOURI || config.mongo.mongoUri);
+mongoose.connect(process.env.MONGOURI);
 mongoose.connection.once("open", () => console.log(`Connected to MongoDB`));
 
 
