@@ -2,9 +2,9 @@ const mongoose = require("mongoose"),
   Cart = require("./Cart");
 
 const User = new mongoose.Schema({
-  name: {type: String, required: true, trim: true, unique: true}
-  , email: {type: String, required: true, trim: true, unique: true, index: true}
-  , password: {type: String, required: true}
+  facebook_id: {type: String, required: true, unique: true}
+  , name: {type: String, required: true}
+  , email: {type: String, unique: true}
   , cart: [Cart]
   , orders: [{type: mongoose.Schema.Types.ObjectId, ref: "Order"}]
 });
