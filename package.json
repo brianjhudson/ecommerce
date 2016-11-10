@@ -20,8 +20,11 @@
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "express-sessions": "^1.0.6",
     "mongojs": "^2.4.0",
-    "mongoose": "^4.6.1"
+    "mongoose": "^4.6.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1"
   }
 }
