@@ -9,6 +9,7 @@
     <div class="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
       <div class="card" ng-repeat="order in orders">
         <div class="card-title">{{order.orderDate | date: medium}}</div>
+        <div class="">{{order.user.name}}</div>
         <div class="card-content" ng-repeat="product in order.products">
           <h6>{{product.item.title}}</h6>
           <p>{{product.item.description}}</p>
