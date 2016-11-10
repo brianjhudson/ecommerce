@@ -3,6 +3,11 @@ angular.module("mainApp", ["ui.router", "ui.materialize"])
   $urlRouterProvider.otherwise("shop");
   $stateProvider
 
+    .state("login", {
+      url: "/login",
+      templateUrl: "../views/login.html"
+    })
+    
     .state("shop", {
       url: "/shop",
       templateUrl: "../views/shop.html"
