@@ -36,7 +36,7 @@ angular.module("mainApp").service("productService", function($http) {
   };
 
   this.addToCart = product => {
-    return $http.post(userUrl + "/" + user._id, product);
+    return $http.post(userUrl + "/" + user.facebook_id, product);
   }
 
 })
